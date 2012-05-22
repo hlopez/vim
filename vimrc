@@ -490,7 +490,7 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
     autocmd!
 
     autocmd VimEnter *  if !has("gui_running") | set background=dark notitle noicon | endif
-    autocmd GUIEnter *  set background=light title icon cmdheight=2 lines=25 columns=80 guioptions-=T
+    autocmd GUIEnter *  set background=dark title icon cmdheight=2 lines=25 columns=80 guioptions-=T
     autocmd GUIEnter *  if has("diff") && &diff | set columns=165 | endif
     autocmd GUIEnter *  silent! colorscheme vividchalk
     autocmd GUIEnter *  call s:initialize_font()
