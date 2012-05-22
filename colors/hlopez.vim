@@ -10,7 +10,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "tim"
+let colors_name = "hlopez"
 
 hi Type        gui=none
 hi Statement   gui=none

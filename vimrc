@@ -452,7 +452,6 @@ endif " has("autocmd")
 " Section: Visual {{{1
 " --------------------
 
-colorscheme hlopez
 " Switch syntax highlighting on, when the terminal has colors
 if (&t_Co > 2 || has("gui_running")) && has("syntax")
   function! s:initialize_font()
