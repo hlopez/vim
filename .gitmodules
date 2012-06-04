@@ -28,3 +28,6 @@
 [submodule "bundle/vim-latex"]
 	path = bundle/vim-latex
 	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
+[submodule "bundle/vbnet"]
+	path = bundle/vbnet
+	url = https://github.com/vim-scripts/VB.NET-Syntax.git
