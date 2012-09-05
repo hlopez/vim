@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/hlopez/Development/plandoc'
-let g:netrw_dirhist_2='/home/hlopez/Development/plandoc/config'
-let g:netrw_dirhist_3='/home/hlopez/Development/plandoc'
-let g:netrw_dirhist_4='/home/hlopez/Downloads/196-nested-model-form-part-1/surveysays'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/ugho/Dropbox/Development/plandoc'
+let g:netrw_dirhist_2='/home/ugho/Dropbox/Development/plandoc/config'
+let g:netrw_dirhist_3='/home/ugho/Dropbox/Development/plandoc'
+let g:netrw_dirhist_4='/home/ugho/Dropbox/Development/plandoc/app'
+let g:netrw_dirhist_5='/home/ugho/Dropbox/Development/plandoc'

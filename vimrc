@@ -10,7 +10,6 @@ set nocompatible
 set autoindent
 set autowrite       " Automatically save before commands like :next and :make
 set backspace=2
-set bomb
 
 if has("balloon_eval") && has("unix")
   set ballooneval
@@ -239,7 +238,7 @@ function! Run()
       wa
       let &makeprg = matchstr(getline(1),'^#!\zs.*').' %'
       make
-    elseif &ft == 'mail' || &ft == 'text' || &ft == 'help' || &ft == 'gitcommit'
+    elseif &ft == 'mail' || &ft == 'text' || &ft == 'help' || &ft == 'gitcommit' || &ft == 'tex'
       setlocal spell!
     elseif exists('b:rails_root') && exists(':Rake')
       wa
