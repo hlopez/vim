@@ -31,3 +31,6 @@
 [submodule "bundle/dwm"]
 	path = bundle/dwm
 	url = https://github.com/spolu/dwm.vim.git
+[submodule "bundle/vimchat"]
+	path = bundle/vimchat
+	url = https://github.com/ironcamel/vimchat.git
