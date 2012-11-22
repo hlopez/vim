@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/ugho/Development/TetrisEia'
 let g:netrw_dirhist_2='/home/hlopez/Dropbox/development/plandoc'
+let g:netrw_dirhist_3='/home/hlopez'
+let g:netrw_dirhist_4='/home'
+let g:netrw_dirhist_5='/'
