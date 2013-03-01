@@ -336,6 +336,11 @@ noremap! <S-Insert> <MiddleMouse>
 map <Leader>fm :g/^\s*$/,/\S/-j<Bar>%s/\s\+$//<CR>
 map <Leader>v  :so ~/.vimrc<CR>
 
+" Disable arrows in the keyboard
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 " Section: Autocommands {{{1
 " --------------------------
