@@ -1,7 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/hlopez/Dropbox/development/plandoc/app'
-let g:netrw_dirhist_2='/home/hlopez/Dropbox/development/plandoc'
-let g:netrw_dirhist_3='/home/hlopez/Documents/EIA/Signatures/Analysis&Design/tareas_enviadas/Henry/Suma java'
-let g:netrw_dirhist_4='/home/hlopez/Documents/EIA/Signatures/Analysis&Design/tareas_enviadas/Andres'
-let g:netrw_dirhist_5='/home/hlopez/Dropbox/development/plandoc'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/hlopez/Documents/EIA/Investigación/SIU/bichos/development'
