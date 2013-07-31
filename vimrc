@@ -12,8 +12,11 @@ set autowrite       " Automatically save before commands like :next and :make
 set backspace=2
 
 if has("balloon_eval") && has("unix")
-  set ballooneval
+  set noballooneval
 endif
+
+
+
 if exists("&breakindent")
   set breakindent showbreak=+++
 elseif has("gui_running")
@@ -35,6 +38,7 @@ endif
 set incsearch       " Incremental search
 set laststatus=2    " Always show status line
 set lazyredraw
+
 if (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8') && version >= 700
   let &listchars = "tab:\u21e5\u00b7,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
 else
@@ -336,11 +340,19 @@ noremap! <S-Insert> <MiddleMouse>
 map <Leader>fm :g/^\s*$/,/\S/-j<Bar>%s/\s\+$//<CR>
 map <Leader>v  :so ~/.vimrc<CR>
 
+" Toggle NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
 " Disable arrows in the keyboard
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
 
 " Section: Autocommands {{{1
 " --------------------------
@@ -462,7 +474,7 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
   function! s:initialize_font()
     if exists("&guifont")
       if has("mac")
-        set guifont=Monaco:h12
+        set guifont=Inconsolata:h14,Monaco:h14
       elseif has("unix")
         if &guifont == ""
           set guifont=bitstream\ vera\ sans\ mono\ 10
@@ -484,24 +496,23 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
   endif
   set list
   if !exists('g:colors_name')
-    if filereadable(expand("~/.vim/colors/hlopez.vim"))
+    if filereadable(expand("~/.vim/colors/zenburn.vim"))
+      colorscheme zenburn
+    elseif filereadable(expand("~/.vim/colors/hlopez.vim"))
       colorscheme hlopez
-    elseif filereadable(expand("~/.vim/colors/ugho.vim"))
-      colorscheme ugho
     endif
   endif
 
   augroup RCVisual
-    autocmd!
-
-    autocmd VimEnter *  if !has("gui_running") | set background=dark notitle noicon | endif
-    autocmd GUIEnter *  set background=dark title icon cmdheight=2 lines=25 columns=80 guioptions-=T
-    autocmd GUIEnter *  if has("diff") && &diff | set columns=165 | endif
-    autocmd GUIEnter *  silent! colorscheme vividchalk
-    autocmd GUIEnter *  call s:initialize_font()
-    autocmd GUIEnter *  let $GIT_EDITOR = 'false'
-    autocmd Syntax css  syn sync minlines=50
-    autocmd Syntax csh  hi link cshBckQuote Special | hi link cshExtVar PreProc | hi link cshSubst PreProc | hi link cshSetVariables Identifier
+     autocmd!
+     "autocmd VimEnter *  if !has("gui_running") | set background=dark notitle noicon | endif
+     "autocmd GUIEnter *  set background=dark title icon cmdheight=2 lines=25 columns=80 guioptions-=T
+     autocmd GUIEnter *  if has("diff") && &diff | set columns=165 | endif
+     autocmd GUIEnter *  silent! colorscheme zenburn
+     autocmd GUIEnter *  call s:initialize_font()
+     autocmd GUIEnter *  let $GIT_EDITOR = 'false'
+     autocmd Syntax css  syn sync minlines=50
+     autocmd Syntax csh  hi link cshBckQuote Special | hi link cshExtVar PreProc | hi link cshSubst PreProc | hi link cshSetVariables Identifier
   augroup END
 endif
 
