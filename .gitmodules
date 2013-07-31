@@ -31,6 +31,3 @@
 [submodule "bundle/vimchat"]
 	path = bundle/vimchat
 	url = https://github.com/ironcamel/vimchat.git
-[submodule "bundle/evervim"]
-	path = bundle/evervim
-	url = https://github.com/kakkyz81/evervim.git
