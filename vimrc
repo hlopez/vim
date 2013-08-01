@@ -474,7 +474,7 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
   function! s:initialize_font()
     if exists("&guifont")
       if has("mac")
-        set guifont=Inconsolata:h14,Monaco:h14
+        set guifont=Anonymous\ Pro:h14,Inconsolata:h14,Monaco:h14
       elseif has("unix")
         if &guifont == ""
           set guifont=bitstream\ vera\ sans\ mono\ 10
