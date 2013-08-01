@@ -505,8 +505,8 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
 
   augroup RCVisual
      autocmd!
-     "autocmd VimEnter *  if !has("gui_running") | set background=dark notitle noicon | endif
-     "autocmd GUIEnter *  set background=dark title icon cmdheight=2 lines=25 columns=80 guioptions-=T
+     autocmd VimEnter *  if !has("gui_running") | set background=dark notitle noicon | endif
+     autocmd GUIEnter *  set background=dark title icon cmdheight=2 lines=25 columns=80 guioptions-=T
      autocmd GUIEnter *  if has("diff") && &diff | set columns=165 | endif
      autocmd GUIEnter *  silent! colorscheme zenburn
      autocmd GUIEnter *  call s:initialize_font()
