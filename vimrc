@@ -1,4 +1,5 @@
-" Section: Options {{{1
+" Section: Options {{{1:on
+"
 " ---------------------
 if has("win32")
   let &runtimepath = substitute(&runtimepath,'\(Documents and Settings\|Users\)[\\/][^\\/,]*[\\/]\zsvimfiles\>','.vim','g')
@@ -474,7 +475,8 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
   function! s:initialize_font()
     if exists("&guifont")
       if has("mac")
-        set guifont=Anonymous\ Pro:h14,Inconsolata:h14,Monaco:h14
+        "set guifont=Anonymous\ Pro:h14,Inconsolata:h14,Monaco:h14
+        set guifont=Inconsolata:h15,Monaco:h14
       elseif has("unix")
         if &guifont == ""
           set guifont=bitstream\ vera\ sans\ mono\ 10
