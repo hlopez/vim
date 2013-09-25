@@ -355,6 +355,9 @@ nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+
 " Section: Autocommands {{{1
 " --------------------------
 
