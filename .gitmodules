@@ -55,6 +55,6 @@
 [submodule "bundle/twitvim"]
 	path = bundle/twitvim
 	url = https://github.com/vim-scripts/TwitVim
-[submodule "flappyvird-vim"]
-	path = flappyvird-vim
+[submodule "bundle/flappyvird"]
+	path = bundle/flappyvird
 	url = https://github.com/mattn/flappyvird-vim
