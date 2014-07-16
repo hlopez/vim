@@ -1,6 +1,7 @@
 " Section: Options {{{1:on
 "
 " ---------------------
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 if has("win32")
   let &runtimepath = substitute(&runtimepath,'\(Documents and Settings\|Users\)[\\/][^\\/,]*[\\/]\zsvimfiles\>','.vim','g')
 endif
