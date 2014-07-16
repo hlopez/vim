@@ -156,7 +156,7 @@ let g:surround_{char2nr('^')} = "/^\r$/"
 let g:surround_indent = 1
 
 let g:dbext_default_history_file = "/tmp/dbext_sql_history.txt"
-
+let twitvim_browser_cmd = 'open'
 endif
 
 " }}}2
@@ -478,56 +478,6 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
   function! s:initialize_font()
     if exists("&guifont")
       if has("mac")
-" Section: Options {{{1:on
-"
-" ---------------------
-if has("win32")
-  let &runtimepath = substitute(&runtimepath,'\(Documents and Settings\|Users\)[\\/][^\\/,]*[\\/]\zsvimfiles\>','.vim','g')
-endif
-silent! call pathogen#runtime_append_all_bundles()
-silent! call pathogen#helptags()
-
-set nocompatible
-set autoindent
-set autowrite       " Automatically save before commands like :next and :make
-set backspace=2
-
-if has("balloon_eval") && has("unix")
-  set noballooneval
-endif
-
-
-
-if exists("&breakindent")
-  set breakindent showbreak=+++
-elseif has("gui_running")
-  set showbreak=\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +++
-endif
-
-set cmdheight=2
-set complete-=i     " Searching includes can be slow
-set dictionary+=/usr/share/dict/words
-set display=lastline
-if has("eval")
-  let &fileencodings = substitute(&fileencodings,"latin1","cp1252","")
-endif
-set fileformats=unix,dos,mac
-set grepprg=grep\ -rnH\ --exclude='.*.swp'\ --exclude='*~'\ --exclude=tags
-if has("eval")
-  let &highlight = substitute(&highlight,'NonText','SpecialKey','g')
-endif
-set incsearch       " Incremental search
-set laststatus=2    " Always show status line
-set lazyredraw
-
-if (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8') && version >= 700
-  let &listchars = "tab:\u21e5\u00b7,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
-else
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<
-endif
-set modelines=5     " Debian likes to disable this
-set mousemodel=popup
-set pastetoggle=<F2>
         "set guifont=Anonymous\ Pro:h14,Inconsolata:h14,Monaco:h14
         set guifont=Inconsolata:h15,Monaco:h14
       elseif has("unix")
