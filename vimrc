@@ -157,6 +157,11 @@ let g:surround_{char2nr('^')} = "/^\r$/"
 let g:surround_indent = 1
 
 let g:dbext_default_history_file = "/tmp/dbext_sql_history.txt"
+let g:airline_theme='powerlineish'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_z=''
+
 let twitvim_browser_cmd = 'open'
 endif
 
@@ -317,7 +322,7 @@ endif
 
 " Section: Mappings {{{1
 " ----------------------
-
+let mapleader = "\<Space>"
 map  <F1>   <Esc>
 map! <F1>   <Esc>
 if has("gui_running")
@@ -334,10 +339,6 @@ map <F9>    :Run<CR>
 map <silent> <F10>   :let tagsfile = tempname()\|silent exe "!ctags -f ".tagsfile." \"%\""\|let &l:tags .= "," . tagsfile\|unlet tagsfile<CR>
 map <silent> <F11> :if exists(":BufExplorer")<Bar>exe "BufExplorer"<Bar>else<Bar>buffers<Bar>endif<CR>
 map <C-F4>  :bdelete<CR>
-
-noremap  <S-Insert> <MiddleMouse>
-noremap! <S-Insert> <MiddleMouse>
-
 " Merge consecutive empty lines and clean up trailing whitespace
 map <Leader>fm :g/^\s*$/,/\S/-j<Bar>%s/\s\+$//<CR>
 map <Leader>v  :so ~/.vimrc<CR>
@@ -350,14 +351,18 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-
+"-
+noremap  <S-Insert> <MiddleMouse>
+noremap! <S-Insert> <MiddleMouse>
+"-
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
-
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
+"-
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " Section: Autocommands {{{1
 " --------------------------
