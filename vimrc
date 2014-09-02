@@ -125,7 +125,7 @@ if has("eval")
 let g:is_bash = 1
 let g:lisp_rainbow = 1
 let g:liquid_highlight_types = ['vim', 'ruby', 'html', 'javascript', 'css', 'erb=eruby', 'bash=sh', 'jinja=liquid', 'html+erb=eruby.html', 'html+jinja=liquid.html']
-let g:netrw_list_hide = '^\.,^tags$'
+let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
 let g:ruby_minlines = 500
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
