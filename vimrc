@@ -73,7 +73,7 @@ set visualbell
 set virtualedit=block
 set wildmenu
 set wildmode=longest:full,full
-set wildignore+=*~,*.aux,tags
+set wildignore+=*~,*.aux,tags,.*
 set winaltkeys=no
 
 if v:version >= 600
@@ -140,6 +140,8 @@ let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 1
 let g:NERDShutUp = 1
 let g:NERDTreeHijackNetrw = 0
+let g:NERDTreeDirArrows=0
+
 let g:ragtag_global_maps = 1
 let g:space_disable_select_mode = 1
 let g:syntastic_enable_signs = 1
@@ -157,10 +159,13 @@ let g:surround_{char2nr('^')} = "/^\r$/"
 let g:surround_indent = 1
 
 let g:dbext_default_history_file = "/tmp/dbext_sql_history.txt"
-let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
+let g:airline_powerline_fonts=0
+let g:airline#extensions#whitespace#show_message = 1
+let g:airline#extensions#whitespace#checks = [ 'indent']
+let g:airline_powerline_fonts = 1
 
 let twitvim_browser_cmd = 'open'
 endif
@@ -485,7 +490,7 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
     if exists("&guifont")
       if has("mac")
         "set guifont=Anonymous\ Pro:h14,Inconsolata:h14,Monaco:h14
-        set guifont=Inconsolata:h15,Monaco:h14
+        set guifont=Anonymous\ Pro:h14,Inconsolata:h14,Monaco:h14
       elseif has("unix")
         if &guifont == ""
           set guifont=bitstream\ vera\ sans\ mono\ 10
@@ -506,20 +511,22 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
     syntax on
   endif
   set list
-  if !exists('g:colors_name')
-    if filereadable(expand("~/.vim/colors/zenburn.vim"))
-      colorscheme zenburn
-    elseif filereadable(expand("~/.vim/colors/hlopez.vim"))
-      colorscheme hlopez
-    endif
-  endif
+  " if !exists('g:colors_name')
+  "   if filereadable(expand("~/.vim/colors/vividchalk.vim"))
+  "     colorscheme vividchalk
+  "   elseif filereadable(expand("~/.vim/colors/zenburn.vim"))
+  "     colorscheme zenburn
+  "   elseif filereadable(expand("~/.vim/colors/hlopez.vim"))
+  "     colorscheme hlopez
+  "   endif
+  " endif
 
   augroup RCVisual
      autocmd!
      autocmd VimEnter *  if !has("gui_running") | set background=dark notitle noicon | endif
      autocmd GUIEnter *  set background=dark title icon cmdheight=2 lines=25 columns=80 guioptions-=T
      autocmd GUIEnter *  if has("diff") && &diff | set columns=165 | endif
-     autocmd GUIEnter *  silent! colorscheme zenburn
+     autocmd GUIEnter *  silent! colorscheme vividchalk
      autocmd GUIEnter *  call s:initialize_font()
      autocmd GUIEnter *  let $GIT_EDITOR = 'false'
      autocmd Syntax css  syn sync minlines=50
