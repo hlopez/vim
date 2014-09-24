@@ -46,6 +46,8 @@ if (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8') && version >= 700
 else
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<
 endif
+
+set encoding=utf-8
 set modelines=5     " Debian likes to disable this
 set mousemodel=popup
 set pastetoggle=<F2>
@@ -159,13 +161,12 @@ let g:surround_{char2nr('^')} = "/^\r$/"
 let g:surround_indent = 1
 
 let g:dbext_default_history_file = "/tmp/dbext_sql_history.txt"
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_section_z=''
-let g:airline_powerline_fonts=0
-let g:airline#extensions#whitespace#show_message = 1
-let g:airline#extensions#whitespace#checks = [ 'indent']
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 let g:airline_powerline_fonts = 1
+let g:Powerline_symbols="fancy"
 
 let twitvim_browser_cmd = 'open'
 endif
@@ -489,8 +490,7 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
   function! s:initialize_font()
     if exists("&guifont")
       if has("mac")
-        "set guifont=Anonymous\ Pro:h14,Inconsolata:h14,Monaco:h14
-        set guifont=Anonymous\ Pro:h14,Inconsolata:h14,Monaco:h14
+        set guifont=Anonymous\ Pro\ for\ Powerline:h14,Inconsolata\ for\ Powerline:h14,Monaco:h14
       elseif has("unix")
         if &guifont == ""
           set guifont=bitstream\ vera\ sans\ mono\ 10
@@ -511,6 +511,7 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
     syntax on
   endif
   set list
+
   " if !exists('g:colors_name')
   "   if filereadable(expand("~/.vim/colors/vividchalk.vim"))
   "     colorscheme vividchalk
@@ -523,10 +524,10 @@ if (&t_Co > 2 || has("gui_running")) && has("syntax")
 
   augroup RCVisual
      autocmd!
-     autocmd VimEnter *  if !has("gui_running") | set background=dark notitle noicon | endif
-     autocmd GUIEnter *  set background=dark title icon cmdheight=2 lines=25 columns=80 guioptions-=T
+     autocmd VimEnter *  if !has("gui_running") | set background=light notitle noicon | endif
+     autocmd GUIEnter *  set background=light title icon cmdheight=2 lines=25 columns=80 guioptions-=T
      autocmd GUIEnter *  if has("diff") && &diff | set columns=165 | endif
-     autocmd GUIEnter *  silent! colorscheme vividchalk
+     autocmd GUIEnter *  silent! colorscheme mac_classic
      autocmd GUIEnter *  call s:initialize_font()
      autocmd GUIEnter *  let $GIT_EDITOR = 'false'
      autocmd Syntax css  syn sync minlines=50
