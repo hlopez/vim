@@ -12,6 +12,7 @@ set nocompatible
 set autoindent
 set autowrite       " Automatically save before commands like :next and :make
 set backspace=2
+set regexpengine=1
 
 if has("balloon_eval") && has("unix")
   set noballooneval
@@ -40,6 +41,7 @@ endif
 set incsearch       " Incremental search
 set laststatus=2    " Always show status line
 set lazyredraw
+set ttyfast
 
 if (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8') && version >= 700
   let &listchars = "tab:\u21e5\u00b7,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
