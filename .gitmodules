@@ -76,3 +76,6 @@
 [submodule "bundle/conoline.vim"]
 	path = bundle/conoline.vim
 	url = https://github.com/miyakogi/conoline.vim.git
+[submodule "bundle/unite.vim"]
+	path = bundle/unite.vim
+	url = https://github.com/Shougo/unite.vim

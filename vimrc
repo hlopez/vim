@@ -8,16 +8,20 @@ endif
 silent! call pathogen#runtime_append_all_bundles()
 silent! call pathogen#helptags()
 
+
 set nocompatible
 set autoindent
 set autowrite       " Automatically save before commands like :next and :make
 set backspace=2
-set regexpengine=1
+
+"Because render some highlighted text make slow scroll
+if v:version >= 740
+  set regexpengine=1
+endif
 
 if has("balloon_eval") && has("unix")
   set noballooneval
 endif
-
 
 
 if exists("&breakindent")
@@ -30,11 +34,15 @@ set cmdheight=2
 set complete-=i     " Searching includes can be slow
 set dictionary+=/usr/share/dict/words
 set display=lastline
+
 if has("eval")
   let &fileencodings = substitute(&fileencodings,"latin1","cp1252","")
 endif
+
 set fileformats=unix,dos,mac
+
 set grepprg=grep\ -rnH\ --exclude='.*.swp'\ --exclude='*~'\ --exclude=tags
+
 if has("eval")
   let &highlight = substitute(&highlight,'NonText','SpecialKey','g')
 endif
@@ -58,9 +66,11 @@ set showcmd         " Show (partial) command in status line.
 set showmatch       " Show matching brackets.
 set smartcase       " Case insensitive searches become sensitive with capitals
 set smarttab        " sw at the start of the line, sts everywhere else
+
 if exists("+spelllang")
   set spelllang=es
 endif
+
 set splitbelow      " Split windows at bottom
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 set suffixes+=.dvi  " Lower priority in wildcards
@@ -340,6 +350,7 @@ nnoremap <silent> <Leader>tt :call TrimWhiteSpace()<CR>
 
 map  <F1>   <Esc>
 map! <F1>   <Esc>
+
 if has("gui_running")
   map <F2>  :Fancy<CR>
 endif
@@ -353,6 +364,7 @@ map <F9>    :Run<CR>
 map <silent> <F10>   :let tagsfile = tempname()\|silent exe "!ctags -f ".tagsfile." \"%\""\|let &l:tags .= "," . tagsfile\|unlet tagsfile<CR>
 map <silent> <F11> :if exists(":BufExplorer")<Bar>exe "BufExplorer"<Bar>else<Bar>buffers<Bar>endif<CR>
 map <C-F4>  :bdelete<CR>
+
 " Merge consecutive empty lines and clean up trailing whitespace
 map <Leader>fm :g/^\s*$/,/\S/-j<Bar>%s/\s\+$//<CR>
 map <Leader>v  :so ~/.vimrc<CR>

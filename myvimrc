@@ -1,0 +1,39 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+if has("win32")
+  let &runtimepath = substitute(&runtimepath,'\(Documents and Settings\|Users\)[\\/][^\\/,]*[\\/]\zsvimfiles\>','.vim','g')
+endif
+silent! call pathogen#runtime_append_all_bundles()
+silent! call pathogen#helptags()
+
+
+autocmd bufwritepost ~/.vimrc source ~/.vimrc
+
+set nocompatible
+set autoindent
+set backspace=2
+"
+"Because render some highlighted text make slow scroll
+if v:version >= 740
+  set regexpengine=1
+endif
+
+if exists("&breakindent")
+  set breakindent showbreak=+++
+elseif has("gui_running")
+  set showbreak=\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +++
+endif
+
+" Section: Visual {{{1
+" --------------------
+
+if exists("&guifont")
+if has("mac")
+set guifont=Anonymous\ Pro\ for\ Powerline:h14,Inconsolata\ for\ Powerline:h14,Monaco:h14
+elseif has("unix")
+if &guifont == ""
+set guifont=bitstream\ vera\ sans\ mono\ 10
+endif
+elseif has("win32")
+set guifont=Consolas:h11,Courier\ New:h10
+endif
+endif
