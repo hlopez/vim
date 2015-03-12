@@ -97,6 +97,7 @@ set wildignore+=*/resources/*
 set wildignore+=node_modules/*
 set wildignore+=*.swp,*~,._*
 set wildignore+=.DS_Store
+set wildignore+=*.aux,tags,.*
 
 "Some other adjustments
 if exists("&breakindent")
@@ -118,6 +119,9 @@ if exists("&guifont")
     set guifont=Consolas:h11,Courier\ New:h10
   endif
 endif
+set background=light
+colorscheme pencil
+
 
 if exists("+spelllang")
   set spelllang=es
@@ -143,7 +147,6 @@ endif
 
 " MAPPINGS
 " Disable arrows in the keyboard
-
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
@@ -167,4 +170,11 @@ cnoremap %% <C-R>=expand('%')<cr>
 "
 "Save files using sudo privileges
 cnoremap w!! %!sudo tee > /dev/null %
+
+
+"PLUGGIN CONFIGURATION
+let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
+let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
+let g:airline_theme = 'pencil'
+
 
