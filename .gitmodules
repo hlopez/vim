@@ -4,12 +4,6 @@
 [submodule "bundle/vim-rails"]
 	path = bundle/vim-rails
 	url = http://github.com/tpope/vim-rails.git
-[submodule "bundle/nerd_tree"]
-	path = bundle/nerd_tree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/commentary"]
-	path = bundle/commentary
-	url = https://github.com/tpope/vim-commentary.git
 [submodule "bundle/endwise"]
 	path = bundle/endwise
 	url = https://github.com/tpope/vim-endwise.git
@@ -25,33 +19,15 @@
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/ctrlp.vim"]
-	path = bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim.git
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline
-[submodule "bundle/bufexplorer"]
-	path = bundle/bufexplorer
-	url = https://github.com/jlanzarotta/bufexplorer
-[submodule "bundle/funcoo"]
-	path = bundle/funcoo
-	url = https://github.com/rizzatti/funcoo.vim.git
-[submodule "bundle/dash"]
-	path = bundle/dash
-	url = https://github.com/rizzatti/dash.vim.git
 [submodule "bundle/twitvim"]
 	path = bundle/twitvim
 	url = https://github.com/vim-scripts/TwitVim
-[submodule "bundle/flappyvird"]
-	path = bundle/flappyvird
-	url = https://github.com/mattn/flappyvird-vim
 [submodule "bundle/vim-pathogen"]
 	path = bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen
-[submodule "bundle/vimchat"]
-	path = bundle/vimchat
-	url = https://github.com/ironcamel/vimchat
 [submodule "bundle/vim-expand-region"]
 	path = bundle/vim-expand-region
 	url = https://github.com/terryma/vim-expand-region
@@ -61,21 +37,6 @@
 [submodule "bundle/vim-vinegar"]
 	path = bundle/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar
-[submodule "bundle/vim-colors-github"]
-	path = bundle/vim-colors-github
-	url = https://github.com/croaky/vim-colors-github
-[submodule "bundle/summerfruit256"]
-	path = bundle/summerfruit256
-	url = https://github.com/baeuml/summerfruit256.vim
-[submodule "bundle/vim-mac-classic-theme"]
-	path = bundle/vim-mac-classic-theme
-	url = https://github.com/nelstrom/vim-mac-classic-theme
 [submodule "bundle/vim-textobj-user"]
 	path = bundle/vim-textobj-user
 	url = https://github.com/kana/vim-textobj-user
-[submodule "bundle/conoline.vim"]
-	path = bundle/conoline.vim
-	url = https://github.com/miyakogi/conoline.vim.git
-[submodule "bundle/unite.vim"]
-	path = bundle/unite.vim
-	url = https://github.com/Shougo/unite.vim
