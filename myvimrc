@@ -175,6 +175,5 @@ cnoremap w!! %!sudo tee > /dev/null %
 "PLUGGIN CONFIGURATION
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
 let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
-let g:airline_theme = 'pencil'
 
 
