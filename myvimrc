@@ -85,7 +85,7 @@ set shiftround                  " indent to the closest shiftwidth
 set switchbuf=""                " do not move focus/cursor to where the buffer is already open
 set tagbsearch                  " use binary searching for tags
 set shortmess=atI               " The 'Press ENTER or type command to continue' prompt is jarring and usually unnecessary.
-
+set t_Co=256                    " Use 256 colors for color theme
 
 " Some files to ignore
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -110,7 +110,7 @@ endif
 " Setting theme and gui font
 if exists("&guifont")
   if has("mac")
-    set guifont=Anonymous\ Pro\ for\ Powerline:h14,Inconsolata\ for\ Powerline:h14,Monaco:h14
+    set guifont=Anonymice\ Powerline:h14 ",Inconsolata\ for\ Powerline:h14,Monaco:h14
   elseif has("unix")
     if &guifont == ""
       set guifont=bitstream\ vera\ sans\ mono\ 10
@@ -119,9 +119,18 @@ if exists("&guifont")
     set guifont=Consolas:h11,Courier\ New:h10
   endif
 endif
-set background=light
-colorscheme pencil
 
+set background=light
+"let g:zenburn_high_Contrast=1
+"colorscheme zenburn
+"let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
+"colorscheme pencil
+colorscheme lucius
+LuciusLight
+let g:lucius_contrast=high
+let g:lucius_contrast_bg=normal
+let g:lucius_use_bold
+let g:lucius_use_underline
 
 if exists("+spelllang")
   set spelllang=es
@@ -174,7 +183,6 @@ cnoremap w!! %!sudo tee > /dev/null %
 
 "PLUGGIN CONFIGURATION
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
-let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
 
 let g:unite_source_history_yank_enable = 1
 nnoremap <C-p> :Unite file_rec/async<cr>
