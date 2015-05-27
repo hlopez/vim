@@ -8,7 +8,6 @@ silent! call pathogen#helptags()
 
 
 let g:mapleader = "\<Space>"
-
 autocmd!
 syntax enable
 syntax sync fromstart
@@ -120,17 +119,12 @@ if exists("&guifont")
   endif
 endif
 
-set background=light
-"let g:zenburn_high_Contrast=1
-"colorscheme zenburn
-"let g:pencil_higher_contrast_ui = 1   " 0=low (def), 1=high
-"colorscheme pencil
-colorscheme lucius
-LuciusLight
-let g:lucius_contrast=high
-let g:lucius_contrast_bg=normal
-let g:lucius_use_bold
-let g:lucius_use_underline
+colorscheme PaperColor
+
+"colorscheme lucius
+"LuciusLight
+"let g:lucius_contrast="high"
+"let g:lucius_contrast_bg="normal"
 
 if exists("+spelllang")
   set spelllang=es
@@ -152,6 +146,11 @@ if !exists("autocommands_loaded")
     let autocommands_loaded = 1
     autocmd BufWritePost ~/.vimrc source ~/.vimrc | AirlineRefresh
 endif
+
+" Removes trailing spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
 
 
 " MAPPINGS
@@ -180,6 +179,7 @@ cnoremap %% <C-R>=expand('%')<cr>
 "Save files using sudo privileges
 cnoremap w!! %!sudo tee > /dev/null %
 
+nnoremap <silent> <Leader>tt :call TrimWhiteSpace()<CR>
 
 "PLUGGIN CONFIGURATION
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
@@ -189,3 +189,6 @@ nnoremap <C-p> :Unite file_rec/async<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
+
+"Airline
+let g:airline_exclude_filetypes = ['mpdv']

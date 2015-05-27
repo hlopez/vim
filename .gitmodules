@@ -55,3 +55,6 @@
 [submodule "bundle/lucius"]
 	path = bundle/lucius
 	url = https://github.com/vim-scripts/Lucius
+[submodule "bundle/papercolor-theme"]
+	path = bundle/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme
