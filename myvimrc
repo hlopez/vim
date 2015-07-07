@@ -1,4 +1,4 @@
-"Patogen configuration
+onfiguration
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 if has("win32")
   let &runtimepath = substitute(&runtimepath,'\(Documents and Settings\|Users\)[\\/][^\\/,]*[\\/]\zsvimfiles\>','.vim','g')
@@ -109,7 +109,7 @@ endif
 " Setting theme and gui font
 if exists("&guifont")
   if has("mac")
-    set guifont=Anonymice\ Powerline:h14 ",Inconsolata\ for\ Powerline:h14,Monaco:h14
+    set guifont=Anonymous\ Pro\ for\ Powerline:h14 ",Inconsolata\ for\ Powerline:h14,Monaco:h14
   elseif has("unix")
     if &guifont == ""
       set guifont=bitstream\ vera\ sans\ mono\ 10
@@ -183,12 +183,42 @@ nnoremap <silent> <Leader>tt :call TrimWhiteSpace()<CR>
 
 "PLUGGIN CONFIGURATION
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
+let g:netrw_liststyle=1
 
 let g:unite_source_history_yank_enable = 1
-nnoremap <C-p> :Unite file_rec/async<cr>
-nnoremap <space>/ :Unite grep:.<cr>
-nnoremap <space>y :Unite history/yank<cr>
-nnoremap <space>s :Unite -quick-match buffer<cr>
+
+"nnoremap <C-p> :Unite file_rec/async<cr>
+"nnoremap <space>/ :Unite grep:.<cr>
+"nnoremap <space>y :Unite history/yank<cr>
+"nnoremap <space>s :Unite -quick-match buffer<cr>
+
+" Unite
+
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
+
+
 
 "Airline
 let g:airline_exclude_filetypes = ['mpdv']
+let g:airline_powerline_fonts = 1
+let g:airline_theme='luna'
+
+
+"" SISNE
+nnoremap <leader>s2 :cd ~/Development/sisne2<CR>:e.<CR>:pwd<CR>
+
