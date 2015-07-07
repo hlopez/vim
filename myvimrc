@@ -185,15 +185,8 @@ nnoremap <silent> <Leader>tt :call TrimWhiteSpace()<CR>
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
 let g:netrw_liststyle=1
 
-let g:unite_source_history_yank_enable = 1
-
-"nnoremap <C-p> :Unite file_rec/async<cr>
-"nnoremap <space>/ :Unite grep:.<cr>
-"nnoremap <space>y :Unite history/yank<cr>
-"nnoremap <space>s :Unite -quick-match buffer<cr>
 
 " Unite
-
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
@@ -221,4 +214,9 @@ let g:airline_theme='luna'
 
 "" SISNE
 nnoremap <leader>s2 :cd ~/Development/sisne2<CR>:e.<CR>:pwd<CR>
+
+
+""For spell checking
+nmap <silent> <leader>ss :set spell! spelllang=es<CR>
+nmap <silent> <leader>se :set spell! spelllang=en_us<CR>
 
