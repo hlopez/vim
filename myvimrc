@@ -1,11 +1,7 @@
-"Configuration
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-if has("win32")
-  let &runtimepath = substitute(&runtimepath,'\(Documents and Settings\|Users\)[\\/][^\\/,]*[\\/]\zsvimfiles\>','.vim','g')
-endif
-silent! call pathogen#runtime_append_all_bundles()
-silent! call pathogen#helptags()
-
+"Configuration Pathogen
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
 
 let g:mapleader = "\<Space>"
 autocmd!
@@ -13,8 +9,6 @@ syntax enable
 syntax sync fromstart
 
 set nocompatible
-filetype plugin on
-filetype indent on
 
 let g:vim_tags_auto_generate = 0 " Disable tag generation on file save
 set encoding=utf-8 nobomb        " Default encoding to UTF8
@@ -119,10 +113,14 @@ if exists("&guifont")
   endif
 endif
 
+"colorscheme Preto
+"set background=dark
+
+set background=dark
 colorscheme PaperColor
 
 "colorscheme lucius
-"LuciusLight
+""LuciusLight
 "let g:lucius_contrast="high"
 "let g:lucius_contrast_bg="normal"
 
@@ -155,11 +153,10 @@ endfunction
 
 " MAPPINGS
 " Disable arrows in the keyboard
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-noremap <Space> <NOP>
+map <Up>   <C-W>k
+map <Down> <C-W>j
+map <Left> <C-W>h
+map <Right> <C-W>l
 
 "Exit from insert mode
 inoremap jk <esc>
@@ -184,7 +181,7 @@ nnoremap <silent> <Leader>tt :call TrimWhiteSpace()<CR>
 "PLUGGIN CONFIGURATION
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
 let g:netrw_liststyle=1
-
+let g:netrw_banner=0 
 
 " Unite
 let g:unite_source_history_yank_enable = 1
@@ -196,6 +193,7 @@ nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
+
 function! s:unite_settings()
   " Play nice with supertab
   let b:SuperTabDisabled=1
@@ -209,14 +207,19 @@ endfunction
 "Airline
 let g:airline_exclude_filetypes = ['mpdv']
 let g:airline_powerline_fonts = 1
-let g:airline_theme='luna'
+let g:airline_theme='PaperColor'
 
 
 "" SISNE
-nnoremap <leader>s2 :cd ~/Development/sisne2<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>s2 :cd ~/Development/sisne<CR>:e.<CR>:pwd<CR>
+
+"" NEURONAS 
+nnoremap <leader>ne :cd ~/Development/neuronas<CR>:e.<CR>:pwd<CR>
 
 
 ""For spell checking
 nmap <silent> <leader>ss :set spell! spelllang=es<CR>
 nmap <silent> <leader>se :set spell! spelllang=en_us<CR>
+
+
 
