@@ -40,14 +40,14 @@ function! mpc#GetPlayList()
   call sort(maxLengths.artist, "LargestNumber")
   call sort(maxLengths.album, "LargestNumber")
 
- " for track in playlist
- "   if(maxLengths.position[-1] + 1 > len(track.position))
- "     let track.position = repeat(' ', maxLengths.position[-1] - len(track.position)) . track.position
- "   endif
- "   let track.position .= ' '
- "   let track.artist .= repeat(' ', maxLengths.artist[-1] + 2 - len(track.artist))
- "   let track.album = repeat(' ', maxLengths.album[-1] + 2  - len(track.album))
- " endfor
+  for track in playlist
+    if(maxLengths.position[-1] + 1 > len(track.position))
+      let track.position = repeat(' ', maxLengths.position[-1] - len(track.position)) . track.position
+    endif
+    let track.position .= ' '
+    "let track.artist .= repeat(' ', maxLengths.artist[-1] + 2 - len(track.artist))
+    "let track.album = repeat(' ', maxLengths.album[-1] + 2  - len(track.album))
+  endfor
   return playlist
 endfunction
 
