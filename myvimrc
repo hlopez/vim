@@ -103,7 +103,7 @@ endif
 " Setting theme and gui font
 if exists("&guifont")
   if has("mac")
-    set guifont=Anonymous\ Pro\ for\ Powerline:h14 ",Inconsolata\ for\ Powerline:h14,Monaco:h14
+    set guifont=Anonymous\ Pro\ for\ Powerline:h14,Inconsolata\ for\ Powerline:h14,Monaco:h14
   elseif has("unix")
     if &guifont == ""
       set guifont=bitstream\ vera\ sans\ mono\ 10
@@ -113,16 +113,7 @@ if exists("&guifont")
   endif
 endif
 
-"colorscheme Preto
-"set background=dark
 
-set background=dark
-colorscheme PaperColor
-
-"colorscheme lucius
-""LuciusLight
-"let g:lucius_contrast="high"
-"let g:lucius_contrast_bg="normal"
 
 if exists("+spelllang")
   set spelllang=es
@@ -139,11 +130,6 @@ function! OpenURL(url)
   redraw!
 endfunction
 command! -nargs=1 OpenURL :call OpenURL(<q-args>)
-"
-if !exists("autocommands_loaded")
-    let autocommands_loaded = 1
-    autocmd BufWritePost ~/.vimrc source ~/.vimrc | AirlineRefresh
-endif
 
 " Removes trailing spaces
 function! TrimWhiteSpace()
@@ -177,11 +163,30 @@ cnoremap %% <C-R>=expand('%')<cr>
 cnoremap w!! %!sudo tee > /dev/null %
 
 nnoremap <silent> <Leader>tt :call TrimWhiteSpace()<CR>
+"
+"Setting the colorscheme
+set background=dark
+colorscheme PaperColor
+set statusline=   " clear the statusline for when vimrc is reloaded
+set statusline+=%-3.3n\                      " buffer number
+set statusline+=%f\                          " file name
+set statusline+=%h%m%r%w                     " flags
+set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
+set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
+set statusline+=%{&fileformat}]              " file format
+set statusline+=%=                           " right align
+set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
+set statusline+=%b,0x%-8B\                   " current char
+set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
+
+"monochrome
+" default the statusline to green when entering Vim
+hi StatusLine  guifg=#FFFFFF guibg=#0D4466 gui=none
 
 "PLUGGIN CONFIGURATION
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
 let g:netrw_liststyle=1
-let g:netrw_banner=0 
+let g:netrw_banner=0
 
 " Unite
 let g:unite_source_history_yank_enable = 1
@@ -202,17 +207,10 @@ function! s:unite_settings()
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
 
-
-
-"Airline
-let g:airline_exclude_filetypes = ['mpdv']
-let g:airline_powerline_fonts = 1
-let g:airline_theme='PaperColor'
-
 "" SISNE
 nnoremap <leader>s2 :cd ~/Development/sisne<CR>:e.<CR>:pwd<CR>
 
-"" NEURONAS 
+"" NEURONAS
 nnoremap <leader>ne :cd ~/Development/neuronas<CR>:e.<CR>:pwd<CR>
 
 
