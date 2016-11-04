@@ -12,7 +12,7 @@ syntax sync fromstart
 
 let g:vim_tags_auto_generate = 0 " Disable tag generation on file save
 set encoding=utf-8 nobomb        " Default encoding to UTF8
-set synmaxcol=1200               " Syntax coloring lines that are too long just slows down the world
+"set synmaxcol=1200               " Syntax coloring lines that are too long just slows down the world
 set nojoinspaces                 " Use only 1 space after "." when joining lines instead of 2
 set nostartofline                " Don't reset cursor to start of line when moving around
 
@@ -93,6 +93,10 @@ set wildignore+=*.swp,*~,._*
 set wildignore+=.DS_Store
 set wildignore+=*.aux,tags,.*
 
+"Chaging grep for ack
+set grepprg=ack\ --nogroup\ --column\ $*
+set grepformat=%f:%l:%c:%m
+
 "Some other adjustments
 if exists("&breakindent")
   set breakindent showbreak=+++
@@ -147,6 +151,7 @@ map <Right> <C-W>l
 
 "Exit from insert mode
 inoremap jk <esc>
+inoremap <leader><leader> <esc>
 
 " open URL under cursor in browser
 nnoremap gb :OpenURL <cfile><CR>
@@ -170,17 +175,17 @@ set background=dark
 colorscheme PaperColor
 "colorscheme 256_noir
  
-"set statusline=   " clear the statusline for when vimrc is reloaded
-"set statusline+=%-3.3n\                      " buffer number
-"set statusline+=%f\                          " file name
+set statusline=   " clear the statusline for when vimrc is reloaded
+set statusline+=%-3.3n\                      " buffer number
+set statusline+=%f\                          " file name
+set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
 "set statusline+=%h%m%r%w                     " flags
 "set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
 "set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
 "set statusline+=%{&fileformat}]              " file format
-"set statusline+=%=                           " right align
-"set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
-"set statusline+=%b,0x%-8B\                   " current char
-"set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
+set statusline+=%=                           " right align
+set statusline+=%b,0x%-8B\                   " current char
+set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
 
 "PLUGGIN CONFIGURATION
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
@@ -207,15 +212,19 @@ function! s:unite_settings()
 endfunction
 
 "" SISNE
-nnoremap <leader>s2 :cd ~/Development/sisne<CR>:e.<CR>:pwd<CR>
-nnoremap <leader>sa :cd ~/Development/sapec<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>ds :cd ~/Development/sisne<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>di :cd ~/Development/intranet_gna/<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>dco :cd ~/Development/intranet_gna/apps/core/<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>dcl :cd ~/Development/intranet_gna/apps/clinical/<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>df :cd ~/Development/intranet_gna/apps/financial/<CR>:e.<CR>:pwd<CR>
 
 "" NEURONAS
 nnoremap <leader>ne :cd ~/Development/neuronas<CR>:e.<CR>:pwd<CR>
 
 ""For spell checking
-nmap <silent> <leader>ss :set spell! spelllang=es<CR>
-nmap <silent> <leader>se :set spell! spelllang=en_us<CR>
+nmap <silent> <leader>scs :set spell! spelllang=es<CR>
+nmap <silent> <leader>sce :set spell! spelllang=en_us<CR>
+nmap <silent> <leader>nsc :set nospell<CR>
 
 ""For change cursor shape
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
