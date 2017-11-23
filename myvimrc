@@ -32,9 +32,6 @@ set noswapfile                  " no swap files
 "set hidden                      " hide buffers when abandoned
 
 " Improve vim's scrolling speed
-" It does not apply in neovim
-" set ttyfast
-" set ttyscroll=3
 set lazyredraw
 
 " Time out on key codes but not mappings
