@@ -1,5 +1,4 @@
 "Configuration Pathogen
-execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
@@ -20,6 +19,7 @@ set hlsearch                    " highlight the search
 set ls=2                        " show a status line even if there's only one window
 
 set wildmenu                    " show completion on the mode-line
+set number                      " show number in each line
 set linespace=0                 " number of pixels between the lines
 set splitright                  " open vertical splits on the right
 set splitbelow                  " open the horizontal split below
@@ -79,7 +79,8 @@ set shiftround                  " indent to the closest shiftwidth
 set switchbuf=""                " do not move focus/cursor to where the buffer is already open
 set tagbsearch                  " use binary searching for tags
 set shortmess=atI               " The 'Press ENTER or type command to continue' prompt is jarring and usually unnecessary.
-"set t_Co=256                    " Use 256 colors for color theme
+set termguicolors               " Use 256 colors for color theme
+"set t_Co=256                   " Use 256 colors for color theme
 
 " Some files to ignore
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -166,59 +167,62 @@ cnoremap w!! %!sudo tee > /dev/null %
 nnoremap <silent> <Leader>tt :call TrimWhiteSpace()<CR>
 "
 "Setting the colorscheme
-set background=dark
-colorscheme PaperColor
+colorscheme lucario
+"set background=dark
+"colorscheme PaperColor
 "colorscheme 256_noir
  
-"set statusline=   " clear the statusline for when vimrc is reloaded
+set statusline=   " clear the statusline for when vimrc is reloaded
 "set statusline+=%-3.3n\                      " buffer number
-"set statusline+=%f\                          " file name
+set statusline+=%f\                          " file name
 "set statusline+=%h%m%r%w                     " flags
 "set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
 "set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
 "set statusline+=%{&fileformat}]              " file format
-"set statusline+=%=                           " right align
-"set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
-"set statusline+=%b,0x%-8B\                   " current char
-"set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
+set statusline+=%{fugitive#statusline()}
+set statusline+=%=                           " right align
+set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
+set statusline+=%b,0x%-8B\                   " current char
+set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
 
 "PLUGGIN CONFIGURATION
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
 let g:netrw_liststyle=1
 let g:netrw_banner=0
 
-" Unite
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
-
-"" SISNE
-nnoremap <leader>s2 :cd ~/Development/sisne<CR>:e.<CR>:pwd<CR>
-nnoremap <leader>sa :cd ~/Development/sapec<CR>:e.<CR>:pwd<CR>
-
-"" NEURONAS
-nnoremap <leader>ne :cd ~/Development/neuronas<CR>:e.<CR>:pwd<CR>
+"" DEVELOPMENT
+nnoremap <leader>ds :cd ~/Development/sisne<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>di :cd ~/Development/intranet_gna/<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>dco :cd ~/Development/intranet_gna/apps/core/<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>dcl :cd ~/Development/intranet_gna/apps/clinical/<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>df :cd ~/Development/intranet_gna/apps/financial/<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>da :cd ~/Development/intranet_gna/apps/admin/<CR>:e.<CR>:pwd<CR>
 
 ""For spell checking
-nmap <silent> <leader>ss :set spell! spelllang=es<CR>
-nmap <silent> <leader>se :set spell! spelllang=en_us<CR>
+nmap <silent> <leader>scs :set spell! spelllang=es<CR>
+nmap <silent> <leader>sce :set spell! spelllang=en_us<CR>
+nmap <silent> <leader>nsc :set nospell<CR>
 
 ""For change cursor shape
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 "let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+
+" Unite
+"let g:unite_source_history_yank_enable = 1
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+"nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+"nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+"nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+" Custom mappings for the unite buffer
+"autocmd FileType unite call s:unite_settings()
+"function! s:unite_settings()
+" Play nice with supertab
+"  let b:SuperTabDisabled=1
+" Enable navigation with control-j and control-k in insert mode
+"  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+"  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+"endfunction

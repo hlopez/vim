@@ -151,7 +151,7 @@ map <Right> <C-W>l
 
 "Exit from insert mode
 inoremap jk <esc>
-inoremap <leader><leader> <esc>
+" inoremap <leader><leader> <esc>
 
 " open URL under cursor in browser
 nnoremap gb :OpenURL <cfile><CR>
@@ -217,6 +217,7 @@ nnoremap <leader>di :cd ~/Development/intranet_gna/<CR>:e.<CR>:pwd<CR>
 nnoremap <leader>dco :cd ~/Development/intranet_gna/apps/core/<CR>:e.<CR>:pwd<CR>
 nnoremap <leader>dcl :cd ~/Development/intranet_gna/apps/clinical/<CR>:e.<CR>:pwd<CR>
 nnoremap <leader>df :cd ~/Development/intranet_gna/apps/financial/<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>da :cd ~/Development/intranet_gna/apps/admin/<CR>:e.<CR>:pwd<CR>
 
 "" NEURONAS
 nnoremap <leader>ne :cd ~/Development/neuronas<CR>:e.<CR>:pwd<CR>
