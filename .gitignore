@@ -1,6 +1,5 @@
 *~
 *.un~
 .net*
-undo**
-undo/*.*
+undo/*
 spell/*
