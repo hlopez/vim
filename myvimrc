@@ -180,6 +180,12 @@ let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
 let g:netrw_liststyle=1
 let g:netrw_banner=0
 
+"VIM-NOTES CONFIGURATION
+let g:notes_directories = ['~/Google\ Drive\ GNA/NotesAndTasks']
+"
+"VIM-QUICKTASKS CONFIGURATION
+let g:quicktask_snip_path = '~/Google\ Drive\ GNA/NotesAndTasks'
+
 "" DEVELOPMENT
 nnoremap <leader>ds :cd ~/Development/sisne<CR>:e.<CR>:pwd<CR>
 nnoremap <leader>di :cd ~/Development/intranet_gna/<CR>:e.<CR>:pwd<CR>
