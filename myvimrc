@@ -21,6 +21,7 @@ set ls=2                        " show a status line even if there's only one wi
 
 set wildmenu                    " show completion on the mode-line
 set number                      " show number in each line
+set laststatus=2
 set linespace=0                 " number of pixels between the lines
 set splitright                  " open vertical splits on the right
 set splitbelow                  " open the horizontal split below
@@ -78,7 +79,7 @@ set switchbuf=""                " do not move focus/cursor to where the buffer i
 set tagbsearch                  " use binary searching for tags
 set shortmess=atI               " The 'Press ENTER or type command to continue' prompt is jarring and usually unnecessary.
 set termguicolors               " Use 256 colors for color theme
-"set t_Co=256                   " Use 256 colors for color theme
+set t_Co=256                    " Use 256 colors for color theme
 
 " Some files to ignore
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -103,7 +104,7 @@ endif
 " Setting theme and gui font
 if exists("&guifont")
   if has("mac")
-    set guifont=Anonymous\ Pro\ for\ Powerline:h14,Inconsolata\ for\ Powerline:h14,Monaco:h14
+    set guifont=Anonymous\ Pro:h13,Inconsolata:h13,Monaco:h13
   elseif has("unix")
     if &guifont == ""
       set guifont=bitstream\ vera\ sans\ mono\ 10
@@ -165,15 +166,18 @@ cnoremap w!! %!sudo tee > /dev/null %
 nnoremap <silent> <Leader>tt :call TrimWhiteSpace()<CR>
 "
 "Setting the colorscheme
-colorscheme lucario
+set background=dark
+colorscheme PaperColor
+
  
 set statusline=   " clear the statusline for when vimrc is reloaded
 set statusline+=%f\                          " file name
-set statusline+=%{fugitive#statusline()}
 set statusline+=%=                           " right align
 set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
 set statusline+=%b,0x%-8B\                   " current char
 set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
+set statusline+=%<\ %f\ %{fugitive#statusline()} 
+
 
 "PLUGGIN CONFIGURATION
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
