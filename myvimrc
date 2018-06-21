@@ -1,10 +1,11 @@
 "Configuration Pathogen
 "execute pathogen#infect()
-syntax on
 filetype plugin indent on
 
 let g:mapleader = "\<Space>"
 autocmd!
+autocmd BufWritePre * %s/\s\+$//e
+syntax on
 syntax enable
 syntax sync fromstart
 
@@ -104,7 +105,7 @@ endif
 " Setting theme and gui font
 if exists("&guifont")
   if has("mac")
-    set guifont=Anonymous\ Pro:h13,Inconsolata:h13,Monaco:h13
+    set guifont=Anonymous\ Pro:h14,Inconsolata:h14,Monaco:h14
   elseif has("unix")
     if &guifont == ""
       set guifont=bitstream\ vera\ sans\ mono\ 10
@@ -169,15 +170,17 @@ nnoremap <silent> <Leader>tt :call TrimWhiteSpace()<CR>
 set background=dark
 colorscheme PaperColor
 
- 
+
+"Status line
 set statusline=   " clear the statusline for when vimrc is reloaded
 set statusline+=%f\                          " file name
 set statusline+=%=                           " right align
 set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
 set statusline+=%b,0x%-8B\                   " current char
 set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
-set statusline+=%<\ %f\ %{fugitive#statusline()} 
+set statusline+=%<\ %f\ %{fugitive#statusline()}
 
+hi statusline guibg=darkgray ctermfg=8 guifg=black ctermbg=15
 
 "PLUGGIN CONFIGURATION
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
