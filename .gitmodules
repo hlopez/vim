@@ -1,3 +1,6 @@
 [submodule "pack/bundle/start/vimade"]
 	path = pack/bundle/start/vimade
 	url = https://github.com/TaDaa/vimade.git
+[submodule "pack/bundle/start/vim-coffee-script"]
+	path = pack/bundle/start/vim-coffee-script
+	url = https://github.com/vim-scripts/vim-coffee-script.git
