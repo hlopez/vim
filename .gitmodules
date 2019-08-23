@@ -13,3 +13,6 @@
 [submodule "pack/bundle/start/vim-misc"]
 	path = pack/bundle/start/vim-misc
 	url = https://github.com/xolox/vim-misc.git
+[submodule "pack/bundle/start/vim-rails"]
+	path = pack/bundle/start/vim-rails
+	url = https://github.com/tpope/vim-rails.git
