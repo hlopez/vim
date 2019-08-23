@@ -7,3 +7,6 @@
 [submodule "pack/bundle/start/vimade"]
 	path = pack/bundle/start/vimade
 	url = https://github.com/TaDaa/vimade
+[submodule "pack/bundle/start/dracula-theme"]
+	path = pack/bundle/start/dracula-theme
+	url = https://github.com/dracula/vim.git
