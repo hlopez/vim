@@ -4,9 +4,6 @@
 [submodule "pack/bundle/start/nord-vim"]
 	path = pack/bundle/start/nord-vim
 	url = https://github.com/arcticicestudio/nord-vim
-[submodule "pack/bundle/start/dracula-theme"]
-	path = pack/bundle/start/dracula-theme
-	url = https://github.com/dracula/vim.git
 [submodule "pack/bundle/start/denite.nvim"]
 	path = pack/bundle/start/denite.nvim
 	url = https://github.com/Shougo/denite.nvim.git
