@@ -2,7 +2,6 @@
 "execute pathogen#infect()
 filetype plugin indent on
 
-
 let g:mapleader = "\<Space>"
 autocmd!
 autocmd BufWritePre * %s/\s\+$//e
