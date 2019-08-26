@@ -5,12 +5,8 @@ filetype plugin indent on
 let g:mapleader = "\<Space>"
 autocmd!
 autocmd BufWritePre * %s/\s\+$//e
-syntax on
-syntax enable
-syntax sync fromstart
 
 "set nocompatible
-
 let g:vim_tags_auto_generate = 0 " Disable tag generation on file save
 set encoding=utf-8 nobomb        " Default encoding to UTF8
 set synmaxcol=1200               " Syntax coloring lines that are too long just slows down the world
@@ -168,8 +164,13 @@ nnoremap <silent> <Leader>tt :call TrimWhiteSpace()<CR>
 "
 "Setting the colorscheme
 "colorscheme PaperColor
+"colorscheme nord
 set background=dark
-colorscheme nord
+syntax on
+syntax enable
+syntax sync fromstart
+packadd! dracula
+colorscheme dracula
 
 " Denite
 if has('nvim')
