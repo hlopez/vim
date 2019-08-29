@@ -10,6 +10,6 @@
 [submodule "vim-vinegar"]
 	path = vim-vinegar
 	url = https://github.com/tpope/vim-vinegar.git
-[submodule "denite.nvim"]
-	path = denite.nvim
+[submodule "denite"]
+	path = denite
 	url = https://github.com/Shougo/denite.nvim.git
