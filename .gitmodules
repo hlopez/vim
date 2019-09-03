@@ -16,3 +16,6 @@
 [submodule "pack/bundle/start/vimade"]
 	path = pack/bundle/start/vimade
 	url = https://github.com/TaDaa/vimade.git
+[submodule "pack/bundle/start/vim-hug-neovim-rpc"]
+	path = pack/bundle/start/vim-hug-neovim-rpc
+	url = https://github.com/roxma/vim-hug-neovim-rpc.git
