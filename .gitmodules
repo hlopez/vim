@@ -19,3 +19,15 @@
 [submodule "pack/bundle/start/vim-hug-neovim-rpc"]
 	path = pack/bundle/start/vim-hug-neovim-rpc
 	url = https://github.com/roxma/vim-hug-neovim-rpc.git
+[submodule "pack/bundle/start/nvim-yarp"]
+	path = pack/bundle/start/nvim-yarp
+	url = https://github.com/roxma/nvim-yarp.git
+[submodule "pack/bundle/start/dracula"]
+	path = pack/bundle/start/dracula
+	url = https://github.com/dracula/vim.git
+[submodule "pack/bundle/start/vim-vinegar"]
+	path = pack/bundle/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+[submodule "pack/bundle/start/denite"]
+	path = pack/bundle/start/denite
+	url = https://github.com/Shougo/denite.nvim.git
