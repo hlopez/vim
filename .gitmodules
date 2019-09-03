@@ -31,3 +31,15 @@
 [submodule "pack/bundle/start/denite"]
 	path = pack/bundle/start/denite
 	url = https://github.com/Shougo/denite.nvim.git
+[submodule "pack/bundle/start/denite-git"]
+	path = pack/bundle/start/denite-git
+	url = https://github.com/neoclide/denite-git.git
+[submodule "pack/bundle/start/denite-extra"]
+	path = pack/bundle/start/denite-extra
+	url = https://github.com/neoclide/denite-extra.git
+[submodule "pack/bundle/start/macnote"]
+	path = pack/bundle/start/macnote
+	url = https://github.com/neoclide/macnote.vim
+[submodule "pack/bundle/start/todoapp"]
+	path = pack/bundle/start/todoapp
+	url = https://github.com/neoclide/todoapp.vim.git
