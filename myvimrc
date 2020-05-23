@@ -267,5 +267,13 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-""Others maps
-nnoremap <silent> <F2> :lchdir %:p:h<CR>:pwd<CR>
+"" TASKS
+nnoremap <silent> <F2> :s/^\s*\(-<space>\\|\*<space>\)\?\zs\(\[[^\]]*\]<space>\)\?\ze./[<space>]<space>/<CR>0t]
+nnoremap <silent> <F3> :s/^\s*\(-<space>\\|\*<space>\)\?\zs\(\[[^\]]*\]<space>\)\?\ze./[x]<space>/<CR>0t]
+vnoremap <silent> <F2> :s/^\s*\(-<space>\\|\*<space>\)\?\zs\(\[[^\]]*\]<space>\)\?\ze./[<space>]<space>/<CR>0t]
+vnoremap <silent> <F3> :s/^\s*\(-<space>\\|\*<space>\)\?\zs\(\[[^\]]*\]<space>\)\?\ze./[x]<space>/<CR>0t]
+
+""thers maps
+nnoremap <silent> <F4> :lchdir %:p:h<CR>:pwd<CR>
+
+
