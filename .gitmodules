@@ -1,9 +1,6 @@
 [submodule "pack/bundle/start/vim-coffee-script"]
 	path = pack/bundle/start/vim-coffee-script
 	url = https://github.com/vim-scripts/vim-coffee-script.git
-[submodule "pack/bundle/start/nord-vim"]
-	path = pack/bundle/start/nord-vim
-	url = https://github.com/arcticicestudio/nord-vim
 [submodule "pack/bundle/start/vim-misc"]
 	path = pack/bundle/start/vim-misc
 	url = https://github.com/xolox/vim-misc.git
@@ -22,9 +19,6 @@
 [submodule "pack/bundle/start/nvim-yarp"]
 	path = pack/bundle/start/nvim-yarp
 	url = https://github.com/roxma/nvim-yarp.git
-[submodule "pack/bundle/start/dracula"]
-	path = pack/bundle/start/dracula
-	url = https://github.com/dracula/vim.git
 [submodule "pack/bundle/start/vim-vinegar"]
 	path = pack/bundle/start/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar.git
