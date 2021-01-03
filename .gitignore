@@ -3,4 +3,5 @@
 .net*
 undo/*
 spell/*
+plugged/*
 ./undo
