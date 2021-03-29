@@ -21,18 +21,28 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-vinegar'
   Plug 'tpope/vim-fugitive'
   Plug 'dbeniamine/cheat.sh-vim'
-" Initialize plugin system
+  Plug 'kchmck/vim-coffee-script'
+  Plug 'rafalbromirski/vim-aurora'
+  Plug 'chrisbra/csv.vim'
+  Plug 'sheerun/vim-polyglot'
+
+  " Color schemes
+  Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+  Plug 'ackyshake/Spacegray.vim'
+  Plug 'gosukiwi/vim-atom-dark'
+  Plug 'arcticicestudio/nord-vim'
+  Plug 'mhartington/oceanic-next'
+  Plug 'joshdick/onedark.vim'
+  Plug 'agude/vim-eldar'
+  Plug 'morhetz/gruvbox'
+  " Initialize plugin system
 call plug#end()
-
-
-
-
 
 
 let g:mapleader = "\<Space>"
 
 
-"set nocompatible
+set nocompatible
 let g:vim_tags_auto_generate = 0 " Disable tag generation on file save
 set encoding=utf-8 nobomb        " Default encoding to UTF8
 set synmaxcol=1200               " Syntax coloring lines that are too long just slows down the world
@@ -49,7 +59,7 @@ set linespace=0                 " number of pixels between the lines
 set splitright                  " open vertical splits on the right
 set splitbelow                  " open the horizontal split below
 set wrap                        " wrap long lines
-set linebreak                   " break lines at word end
+"set linebreak                   " break lines at word end
 set nobackup                    " don't want no backup files
 set nowritebackup               " don't make a backup before overwriting a file
 set noswapfile                  " no swap files
@@ -57,6 +67,7 @@ set hidden                      " hide buffers when abandoned
 
 " Improve vim's scrolling speed
 set lazyredraw
+set redrawtime=10000
 
 " Time out on key codes but not mappings
 set notimeout
@@ -188,20 +199,24 @@ cnoremap w!! %!sudo tee > /dev/null %
 nnoremap <silent> <Leader>tt :call TrimWhiteSpace()<CR>
 "
 "Setting the colorscheme
-set background=dark
 syntax on
-syntax enable
+set background=dark
+"syntax enable
+colorscheme Oceanicnext
+"colorscheme gruvbox
+"let g:gruvbox_contrast_dark = dark
+"let g:nord_uniform_status_lines = 1
+"let g:nord_cursor_line_number_background = 1
 
-"syntax sync fromstart
-if (&t_Co == 256 || &t_Co == 88) && !has('gui_running')
-  " Use the guicolorscheme plugin to makes 256-color or 88-color
-  " terminal use GUI colors rather than cterm colors.
-  packadd! vim-256noir
-  colorscheme 256_noir
-else
-  packadd! vim-atom-dark
-  colorscheme atom-dark
-endif
+""syntax sync fromstart
+"if !(&t_Co == 256 || &t_Co == 88) && !has('gui_running')
+"  " Use the guicolorscheme plugin to makes 256-color or 88-color
+"  " terminal use GUI colors rather than cterm colors.
+"  " colorscheme 256_noir
+"  colorscheme atom-dark
+"else
+"  colorscheme atom-dark
+"endif
 
 
 
@@ -278,7 +293,7 @@ nnoremap <leader>dco :cd ~/Development/intranet_gna/apps/core/<CR>:e.<CR>:pwd<CR
 nnoremap <leader>dcl :cd ~/Development/intranet_gna/apps/clinical/<CR>:e.<CR>:pwd<CR>
 nnoremap <leader>df :cd ~/Development/intranet_gna/apps/financial/<CR>:e.<CR>:pwd<CR>
 nnoremap <leader>da :cd ~/Development/intranet_gna/apps/admin/<CR>:e.<CR>:pwd<CR>
-nnoremap <leader>dm :cd ~/Development/intranet_gna/apps/clinical/<CR>:e.<CR>:pwd<CR>
+nnoremap <leader>dh :cd ~/Development/intranet_gna/apps/hrm/<CR>:e.<CR>:pwd<CR>
 
 "" DEVELOPMENT
 nnoremap <leader>em :Emodel<SPACE>
@@ -296,16 +311,33 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
+
+set cursorline
 let g:netrw_list_hide = '.*\.swp$,^\.,^tags$'
 let g:netrw_liststyle=0
 let g:netrw_banner=0
-au FileType netrw hi CursorLine guibg=#293739
-au FileType netrw au BufEnter <buffer> hi CursorLine guibg=#293739
-au FileType netrw au BufLeave <buffer> hi CursorLineNR guibg=#232526
-au FileType netrw au BufLeave <buffer> hi CursorLine guifg=NONE guibg=NONE
+let g:netrw_cursor=1
+
+
+"au FileType netrw hi CursorLineNR guibg=NONE guifg=gray
+"au FileType netrw au BufLeave <buffer> hi CursorLineNR guibg=NONE guifg=gray
+"au FileType netrw au BufLeave <buffer> hi CursorLine guibg=NONE
+"jau FileType netrw au BufEnter <buffer> hi CursorLine guibg=yellow guifg=yellow ctermfg=yellow ctermfg=yellow
+"au FileType netrw au BufEnter <buffer> hi CursorLine guibg=yellow
+"au FileType netrw au BufLeave <buffer> hi CursorLine guibg=NONE
+"au FileType netrw au BufLeave <buffer> hi CursorLineNR guibg=NONE guifg=gray
+"au FileType netrw au BufLeave <buffer> hi CursorLine guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
+"hi CursorLineNR guibg=NONE guifg=gray
+"hi CursorLine guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
+
 set cursorline
+au FileType netrw hi CursorLine guibg='#343d46'
+au FileType netrw au BufLeave <buffer> hi CursorLineNR guibg=NONE
+au FileType netrw au BufLeave <buffer> hi CursorLine guifg=NONE guibg=NONE
+hi CursorLineNR guibg=NONE guifg=GRAY ctermbg=NONE ctermfg=GRAY
 hi CursorLine guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
-au FileType netrw au BufLeave <buffer> hi CursorLine guibg=NONE
+
+
 
 
 "" TASKS
@@ -314,47 +346,10 @@ nnoremap <silent> <F3> :s/^\s*\(-<space>\\|\*<space>\)\?\zs\(\[[^\]]*\]<space>\)
 vnoremap <silent> <F2> :s/^\s*\(-<space>\\|\*<space>\)\?\zs\(\[[^\]]*\]<space>\)\?\ze./[<space>]<space>/<CR>0t]
 vnoremap <silent> <F3> :s/^\s*\(-<space>\\|\*<space>\)\?\zs\(\[[^\]]*\]<space>\)\?\ze./[x]<space>/<CR>0t]
 nnoremap <leader>b  :e ~/Development/bullet_task.txt<CR>
-
 ""thers maps
 nnoremap <silent> <F4> :lchdir %:p:h<CR>:pwd<CR>
 
-""COC Configuration
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-"" Took from https://github.com/neoclide/coc.nvim
+let g:deoplete#enable_at_startup = 1
 
 let g:vimade = {"fadelevel": 0.9}
 "
